@@ -1,25 +1,53 @@
 {
   "name": "laikn",
   "displayName": "Laikn",
-  "description": "Eco-aware task router for cloud computing",
+  "description": "Carbon-Aware Code Router",
   "version": "0.0.1",
   "engines": {
-    "vscode": "^1.90.0"
+    "vscode": "^1.96.0"
   },
   "categories": [
     "Other"
   ],
   "activationEvents": [
-    "onCommand:laikn.minify"
+    "onStartupFinished"
   ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "laikn.minify",
-        "title": "Laikn: Eco-Minify"
+        "command": "laikn.eco-route",
+        "title": "Laikn: Eco-Route"
       }
-    ]
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "laikn.eco-route",
+          "group": "navigation",
+          "when": "editorTextFocus"
+        }
+      ]
+    },
+    "icons": {
+      "laikn-logo": {
+        "description": "Custom Laikn Logo",
+        "default": {
+          "fontPath": "./resources/laikn.woff",
+          "fontCharacter": "\\e900"
+        }
+      }
+    },
+    "configuration": {
+      "title": "Laikn Settings",
+      "properties": {
+        "laikn.dashboardUrl": {
+          "type": "string",
+          "default": "http://localhost:3000",
+          "description": "The URL of your Laikn Carbon Analytics Dashboard."
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
@@ -33,19 +61,20 @@
     "test": "vscode-test"
   },
   "devDependencies": {
+    "@types/vscode": "^1.96.0",
     "@types/mocha": "^10.0.10",
-    "@types/node": "22.x",
-    "@types/vscode": "^1.108.1",
-    "@vscode/test-cli": "^0.0.12",
-    "@vscode/test-electron": "^2.5.2",
-    "eslint": "^9.39.2",
-    "ts-loader": "^9.5.4",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.52.0",
-    "webpack": "^5.104.1",
-    "webpack-cli": "^6.0.1"
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.17.0",
+    "@typescript-eslint/parser": "^8.17.0",
+    "eslint": "^9.16.0",
+    "typescript": "^5.7.2",
+    "ts-loader": "^9.5.1",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
   },
   "dependencies": {
-    "axios": "^1.13.2"
+    "axios": "^1.7.9"
   }
 }
