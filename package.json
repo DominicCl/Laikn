@@ -3,6 +3,12 @@
   "displayName": "Laikn",
   "description": "Carbon-Aware Code Router",
   "version": "0.0.1",
+  "publisher": "Dom_Clout",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DominicCl/laikn"
+  },
+  "icon": "resources/FinalLogo.png",
   "engines": {
     "vscode": "^1.96.0"
   },
