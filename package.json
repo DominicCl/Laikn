@@ -1,14 +1,14 @@
 {
   "name": "laikn",
   "displayName": "Laikn",
-  "description": "Carbon-Aware Code Router",
-  "version": "0.0.1",
+  "description": "Carbon-aware suggestions for compute tasks. Currently in continuous development and open to suggestions!",
+  "version": "0.0.5",
   "publisher": "DominicCloutier",
   "repository": {
     "type": "git",
     "url": "https://github.com/DominicCl/Laikn.git"
   },
-  "icon": "resources/FinalLogo.png",
+  "icon": "resources/laikn-icon.png",
   "engines": {
     "vscode": "^1.96.0"
   },
@@ -26,14 +26,15 @@
         "title": "Laikn: Eco-Route"
       }
     ],
-    "menus": {
-      "editor/context": [
-        {
-          "command": "laikn.eco-route",
-          "group": "navigation",
-          "when": "editorTextFocus"
+    "configuration": {
+      "title": "Laikn Settings",
+      "properties": {
+        "laikn.dashboardUrl": {
+          "type": "string",
+          "default": "https://laikn-dashboard-819883251321.us-central1.run.app",
+          "description": "The URL of your Laikn Carbon Analytics Dashboard."
         }
-      ]
+      }
     },
     "icons": {
       "laikn-logo": {
@@ -43,16 +44,6 @@
           "fontCharacter": "\\e900"
         }
       }
-    },
-    "configuration": {
-      "title": "Laikn Settings",
-      "properties": {
-        "laikn.dashboardUrl": {
-          "type": "string",
-          "default": "http://localhost:3000",
-          "description": "The URL of your Laikn Carbon Analytics Dashboard."
-        }
-      }
     }
   },
   "scripts": {
@@ -60,25 +51,7 @@
     "compile": "webpack",
     "watch": "webpack --watch",
     "package": "webpack --mode production --devtool hidden-source-map",
-    "compile-tests": "tsc -p . --outDir out",
-    "watch-tests": "tsc -p . -w --outDir out",
-    "pretest": "npm run compile-tests && npm run compile && npm run lint",
-    "lint": "eslint src",
-    "test": "vscode-test"
-  },
-  "devDependencies": {
-    "@types/vscode": "^1.96.0",
-    "@types/mocha": "^10.0.10",
-    "@types/node": "20.x",
-    "@typescript-eslint/eslint-plugin": "^8.17.0",
-    "@typescript-eslint/parser": "^8.17.0",
-    "eslint": "^9.16.0",
-    "typescript": "^5.7.2",
-    "ts-loader": "^9.5.1",
-    "webpack": "^5.95.0",
-    "webpack-cli": "^5.1.4",
-    "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.4.1"
+    "lint": "eslint src"
   },
   "dependencies": {
     "axios": "^1.7.9"

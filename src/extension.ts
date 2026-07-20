@@ -66,10 +66,9 @@ export function activate(context: vscode.ExtensionContext) {
 
             const data = response.data;
 
-            // 4. GET THE DYNAMIC URL FIRST
-            // We moved this up so we can use it in both the console and the notification
-            const config = vscode.workspace.getConfiguration('laikn');
-            const baseDashboardUrl = config.get<string>('dashboardUrl') || 'http://localhost:3000';
+            // 4. GET THE DYNAMIC URL (FORCE THE PROXY'S URL)
+            // We ignore local settings entirely to ensure the cloud link always wins.
+            const baseDashboardUrl = data.dashboard_url || 'https://laikn-dashboard-819883251321.us-central1.run.app';
             const userDashboardUrl = `${baseDashboardUrl}?user=${userId}`;
 
             // 5. PRINT TO GREEN CONSOLE
@@ -101,7 +100,8 @@ export function activate(context: vscode.ExtensionContext) {
 
         } catch (error) {
             vscode.window.showErrorMessage("Laikn Error: " + error);
-            console.error(error);
+            // Replace console.error with your official output channel
+            outputChannel.appendLine(`>> ERROR: ${error}`);
         }
     });
 
