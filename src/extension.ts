@@ -16,7 +16,7 @@ export function activate(context: vscode.ExtensionContext) {
         // 2. ASK USER FOR PERMISSIONS (The Advisor UI)
         const chosenRegions = await vscode.window.showQuickPick(
             [
-                { label: 'all', description: '🌍 Check Global (12 Regions)'},
+                { label: 'all', description: '🌍 Check Global (16 Regions)'},
                 { label: 'us-central1', description: '🇺🇸 Iowa (Wind)'},
                 { label: 'us-west1', description: '🇺🇸 Oregon (Hydro)'},
                 { label: 'us-east4', description: '🇺🇸 Virginia (Hydro/Solar)'},
@@ -28,7 +28,10 @@ export function activate(context: vscode.ExtensionContext) {
                 { label: 'europe-north1', description: '🇫🇮 Finland (Nuclear)'},
                 { label: 'asia-northeast1', description: '🇯🇵 Tokyo (Gas)'},
                 { label: 'asia-south1', description: '🇮🇳 Mumbai (Gas)'},
-                { label: 'australia-southeast1', description: '🇦🇺 Sydney (Coal)'},
+                { label: 'australia-southeast1', description: '🇦🇺 Sydney (Solar)'},
+                { label: 'europe-southwest1', description: '🇪🇸 Madrid (Solar)'},
+                { label: 'europe-north2', description: '🇸🇪 Stockholm (Hydro)'},
+                { label: 'asia-southeast1', description: '🇸🇬 Singapore (Gas)'},
             ].map(region => ({       
                 ...region,
                 picked: savedRegions.includes(region.label)
@@ -53,7 +56,7 @@ export function activate(context: vscode.ExtensionContext) {
         }
 
         try {
-            const cloudRunUrl = 'https://laikn-router-819883251321.northamerica-northeast1.run.app';
+            const cloudRunUrl = 'https://laikn-proxy-819883251321.northamerica-northeast1.run.app';
 
             // for mutli-tenancy
             const userId = vscode.env.machineId;
