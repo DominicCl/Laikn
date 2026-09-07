@@ -2,7 +2,7 @@
   "name": "laikn",
   "displayName": "Laikn",
   "description": "Carbon-aware suggestions for compute tasks. Currently in continuous development and open to suggestions!",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "publisher": "DominicCloutier",
   "repository": {
     "type": "git",
