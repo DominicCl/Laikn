@@ -50,7 +50,7 @@ export function activate(context: vscode.ExtensionContext) {
         
         const chosenRegions = await vscode.window.showQuickPick(
             [
-                { label: 'all', description: '🌍 Check Global (16 Regions)'},
+                { label: 'all', description: '🌍 Check all available regions'},
                 { label: 'us-central1', description: '🇺🇸 Iowa (Wind)'},
                 { label: 'us-west1', description: '🇺🇸 Oregon (Hydro)'},
                 { label: 'us-east4', description: '🇺🇸 Virginia (Hydro/Solar)'},
