@@ -5,6 +5,12 @@ import axios from 'axios';
 const outputChannel = vscode.window.createOutputChannel("Laikn Green Router");
 const cloudRunUrl = 'https://laikn-proxy-819883251321.northamerica-northeast1.run.app';
 
+function dashboardUrlForUser(baseUrl: string, userId: string): string {
+    const dashboardUrl = new URL(baseUrl);
+    dashboardUrl.searchParams.set('user', userId);
+    return dashboardUrl.toString();
+}
+
 export function activate(context: vscode.ExtensionContext) {
     const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
     statusBarItem.command = "laikn.eco-route";
@@ -97,8 +103,11 @@ export function activate(context: vscode.ExtensionContext) {
 
             const data = response.data;
 
-            const baseDashboardUrl = data.dashboard_url || 'https://laikn-dashboard-819883251321.us-central1.run.app';
-            const userDashboardUrl = `${baseDashboardUrl}?user=${userId}`;
+            const configuredDashboardUrl = vscode.workspace
+                .getConfiguration('laikn')
+                .get<string>('dashboardUrl');
+            const baseDashboardUrl = configuredDashboardUrl || data.dashboard_url || 'https://laikn-dashboard-819883251321.us-central1.run.app';
+            const userDashboardUrl = dashboardUrlForUser(baseDashboardUrl, userId);
 
             // Print to Green Console
             outputChannel.clear();
