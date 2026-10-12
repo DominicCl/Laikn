@@ -8,7 +8,7 @@ Laikn is an experimental assistant designed to help developers consider the envi
 
 *   **Real-Time Analysis:** Fetches live wind, solar, and temperature data to find the best region right now.
 *   **Physics-Based Logic:** Uses hub-height wind speeds (80m) and cubic power formulas for accurate renewable energy estimation.
-*   **Global Reach:** Monitors 12+ major cloud regions across North America, Europe, and Asia.
+*   **Global Reach:** Monitors 17 major cloud regions across North America, Europe, Asia, South America, and Australia.
 *   **Analytics Dashboard:** A private dashboard to track your potential carbon savings over time.
 
 ## Getting Started
@@ -22,4 +22,3 @@ The extension will ask which regions you have access to and provide a detailed a
 ## Development Status
 
 This project is in **continuous development** and is a Proof of Concept (PoC) for smarter engineering standards. We stay humble and are always open to suggestions, feedback, or collaborations to make code routing more sustainable!
-
